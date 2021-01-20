@@ -1,0 +1,128 @@
+{
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+
+  "ignorePatterns": [
+    "/widget/dist/*",
+    "node_modules"
+  ],
+
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["react", "react-hooks"],
+  "rules": {
+    "no-restricted-globals": [
+      "error",
+      {
+        "name": "localStorage",
+        "message": "Use import localStorage from 'utils/localStorage'"
+      }
+    ],
+    "no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "args": "none"
+      }
+    ],
+
+    "no-console": "off",
+    "no-empty": "off",
+    "no-debugger": "warn",
+    "no-useless-escape": "off",
+    "prettier/prettier": ["error"],
+    "eqeqeq": [2, "always", { "null": "ignore" }],
+
+    "no-import-assign": "off",
+
+    // React section
+    "react/prop-types": [0, {}],
+    "react/react-in-jsx-scope": 0,
+    "react/display-name": "off",
+    "react/no-find-dom-node": "off",
+    "react/jsx-no-undef": "off",
+    "react/jsx-no-target-blank": "off",
+    "react/jsx-key": "off",
+    "react/no-unsafe": [0, { "checkAliases": true }], // Disabled for now, before merge into dev
+    "react/no-deprecated": 2, // It's not working now - https://github.com/yannickcr/eslint-plugin-react/pull/2069
+    "react/no-unescaped-entities": "off",
+    "react/no-string-refs": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "globals": {
+    "React": true,
+    "ReactDOM": true,
+    "PropTypes": true,
+    "_": true,
+    "cx": true,
+    "If": true,
+    "Else": true,
+    "When": false,
+    "Choose": false,
+    "Otherwise": false,
+    "FB": false,
+    "StripeCheckout": false,
+    "app": false,
+    "ga": true,
+    "localStorage": "off",
+    "cy": true,
+    "Cypress": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "legacyDecorators": true
+    }
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "extends": [
+        "prettier/@typescript-eslint",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/naming-convention": [
+          "warn",
+          {
+            "selector": "interface",
+            "format": ["PascalCase"],
+            "custom": {
+              "regex": "^I[A-Z]",
+              "match": true
+            }
+          }
+        ],
+        "@typescript-eslint/member-delimiter-style": [
+          "warn",
+          {
+            "multiline": {
+              "delimiter": "none"
+            }
+          }
+        ],
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/camelcase": "off",
+        "@typescript-eslint/no-use-before-define": "off"
+      },
+      "plugins": ["react", "react-hooks", "@typescript-eslint"]
+    }
+  ]
+}
