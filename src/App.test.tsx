@@ -1,9 +1,11 @@
-import React from 'react'
-import { render, screen } from '@testing-library/react'
-import App from './App'
+import { renderWithRedux } from 'utils'
+import LicenseAgreement from 'components/LicenseAgreement'
+import App from 'App'
 
-test('renders learn react link', () => {
-  render(<App />)
-  const linkElement = screen.getByText(/learn react/i)
-  expect(linkElement).toBeInTheDocument()
+jest.mock('components/LicenseAgreement', () => () => null)
+
+test('renders LicenseAgreement', () => {
+  const renderer = renderWithRedux(<App />)
+
+  expect(() => renderer.root.findByType(LicenseAgreement)).not.toThrow()
 })
